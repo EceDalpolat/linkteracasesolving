@@ -9,7 +9,7 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://YOUR_DOMAIN",
+      "value": "https://linkteracasesolving-production.up.railway.app",
       "type": "string"
     }
   ],

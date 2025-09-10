@@ -3,9 +3,9 @@
 Bu proje, Türkiye'deki otomotiv satış adetlerini tahmin etmek için hibrit makine öğrenmesi modeli (Time Series + Linear Regression) kullanır.
 
 ## 🎯 Canlı Demo
-- **API URL**: `https://your-app.railway.app`
-- **Health Check**: `https://your-app.railway.app/health`
-- **Model Info**: `https://your-app.railway.app/model/info`
+- **API URL**: `https://linkteracasesolving-production.up.railway.app`
+- **Health Check**: `https://linkteracasesolving-production.up.railway.app/health`
+- **Model Info**: `https://linkteracasesolving-production.up.railway.app/model/info`
 
 ## 🚀 Hızlı Başlangıç
 
@@ -45,15 +45,16 @@ python automotive_api.py
 
 ### Örnek Request:
 ```bash
-curl -X POST http://localhost:8080/predict \
+curl -X POST https://linkteracasesolving-production.up.railway.app/predict \
   -H "Content-Type: application/json" \
   -d '{
-    "otv_orani": 15.5,
-    "faiz": 17.0, 
-    "eur_tl": 18.5,
-    "kredi_stok": 85000000,
-    "year": 2022,
-    "month": 6
+    "date": "2022-06-01",
+    "values": {
+      "OTV Orani": 65.0,
+      "Faiz": 24.0,
+      "EUR/TL": 17.5,
+      "Kredi Stok": 5000000
+    }
   }'
 ```
 

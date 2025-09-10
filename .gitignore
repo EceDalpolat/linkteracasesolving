@@ -46,3 +46,9 @@ Thumbs.db
 
 # Environment variables
 .env
+
+# Personal files - Kişisel dosyalar
+*.pptx
+modelresult.png
+*EceDal*
+PROJE_SUNUMU.md
