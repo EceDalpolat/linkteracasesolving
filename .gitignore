@@ -52,3 +52,11 @@ Thumbs.db
 modelresult.png
 *EceDal*
 PROJE_SUNUMU.md
+
+# Data files - Veri dosyaları (büyük boyutlu, lokal)
+data/*
+!data/README.md
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+*.xlsx
+*.csv

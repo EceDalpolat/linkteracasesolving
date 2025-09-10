@@ -20,7 +20,14 @@ pip install -r requirements.txt
 ```
 
 ### 2. Veriyi Yerleştir
-`data/` klasörüne `Veri-Seti.xlsx` dosyasını koy.
+```bash
+# Data klasörü yapısı oluştur
+mkdir -p data/raw data/processed
+
+# Veri setini data/raw/ klasörüne yerleştir
+# Veri-Seti.xlsx dosyasını data/raw/ klasörüne koyun
+```
+**Not**: Veri dosyaları boyut nedeniyle GitHub'da bulunmaz. Excel dosyanızı `data/raw/Veri-Seti.xlsx` olarak yerleştirin.
 
 ### 3. Analiz Çalıştır
 ```bash
