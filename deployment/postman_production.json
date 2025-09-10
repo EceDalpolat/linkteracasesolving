@@ -1,0 +1,199 @@
+{
+  "info": {
+    "_postman_id": "automotive-api-collection",
+    "name": "Otomotiv Satış Tahmini API",
+    "description": "Türkiye Otomotiv Satış Adet Tahmini için REST API testleri",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12345678"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://YOUR_DOMAIN",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Model Bilgileri",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/model/info",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "model",
+            "info"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Tek Dönem Tahmini",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"otv_orani\": 65.0,\n  \"faiz\": 24.0,\n  \"eur_tl\": 17.5,\n  \"kredi_stok\": 5000,\n  \"date\": \"2022-06-01\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "predict"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Toplu Tahmin (3 Dönem)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"predictions\": [\n    {\n      \"otv_orani\": 65.0,\n      \"faiz\": 24.0,\n      \"eur_tl\": 17.5,\n      \"kredi_stok\": 5000,\n      \"date\": \"2022-06-01\"\n    },\n    {\n      \"otv_orani\": 65.5,\n      \"faiz\": 24.0,\n      \"eur_tl\": 18.0,\n      \"kredi_stok\": 5100,\n      \"date\": \"2022-07-01\"\n    },\n    {\n      \"otv_orani\": 66.0,\n      \"faiz\": 24.0,\n      \"eur_tl\": 18.5,\n      \"kredi_stok\": 5200,\n      \"date\": \"2022-08-01\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict/batch",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "predict",
+            "batch"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Tarih Aralığı Tahmini (Haz'22 - Haz'23)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"start_date\": \"2022-06-01\",\n  \"end_date\": \"2023-06-01\",\n  \"otv_orani\": 66.0,\n  \"faiz\": 24.0,\n  \"eur_tl\": 19.0,\n  \"kredi_stok\": 5500\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict/range",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "predict",
+            "range"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Yüksek ÖTV Senaryosu",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"otv_orani\": 80.0,\n  \"faiz\": 25.0,\n  \"eur_tl\": 20.0,\n  \"kredi_stok\": 4500,\n  \"date\": \"2023-01-01\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "predict"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. Düşük Faiz Senaryosu",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"otv_orani\": 60.0,\n  \"faiz\": 15.0,\n  \"eur_tl\": 16.0,\n  \"kredi_stok\": 6000,\n  \"date\": \"2023-03-01\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/predict",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "predict"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

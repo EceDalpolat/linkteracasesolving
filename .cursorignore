@@ -1,0 +1,28 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Data files
+data/processed/analysis_plots/
+data/processed/forecast_plots/
+data/processed/model_diagnostics/
+
+# Model files
+*.pkl
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

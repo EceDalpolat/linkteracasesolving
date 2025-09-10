@@ -1,0 +1,80 @@
+ubernetesapiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: automotive-api
+  labels:
+    app: automotive-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: automotive-api
+  template:
+    metadata:
+      labels:
+        app: automotive-api
+    spec:
+      containers:
+      - name: automotive-api
+        image: yourusername/automotive-api:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: automotive-api-service
+spec:
+  selector:
+    app: automotive-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: automotive-api-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - automotive-api.yourdomain.com
+    secretName: automotive-api-tls
+  rules:
+  - host: automotive-api.yourdomain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: automotive-api-service
+            port:
+              number: 80
