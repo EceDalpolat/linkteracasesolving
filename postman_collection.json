@@ -14,7 +14,7 @@
     }
   ],
   "item": [
-    {
+    { 
       "name": "1. Health Check",
       "request": {
         "method": "GET",
@@ -56,7 +56,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"otv_orani\": 65.0,\n  \"faiz\": 24.0,\n  \"eur_tl\": 17.5,\n  \"kredi_stok\": 5000,\n  \"date\": \"2022-06-01\"\n}"
+          "raw": "{\n  \"date\": \"2022-06-01\",\n  \"values\": {\n    \"OTV Orani\": 65.0,\n    \"Faiz\": 24.0,\n    \"EUR/TL\": 17.5,\n    \"Kredi Stok\": 5000\n  }\n}"
         },
         "url": {
           "raw": "{{base_url}}/predict",
@@ -69,7 +69,7 @@
       "response": []
     },
     {
-      "name": "4. Toplu Tahmin (3 Dönem)",
+      "name": "4. Tarih Aralığı Tahmini (Toplu)",
       "request": {
         "method": "POST",
         "header": [
@@ -80,14 +80,14 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"predictions\": [\n    {\n      \"otv_orani\": 65.0,\n      \"faiz\": 24.0,\n      \"eur_tl\": 17.5,\n      \"kredi_stok\": 5000,\n      \"date\": \"2022-06-01\"\n    },\n    {\n      \"otv_orani\": 65.5,\n      \"faiz\": 24.0,\n      \"eur_tl\": 18.0,\n      \"kredi_stok\": 5100,\n      \"date\": \"2022-07-01\"\n    },\n    {\n      \"otv_orani\": 66.0,\n      \"faiz\": 24.0,\n      \"eur_tl\": 18.5,\n      \"kredi_stok\": 5200,\n      \"date\": \"2022-08-01\"\n    }\n  ]\n}"
+          "raw": "{\n  \"start_date\": \"2022-06-01\",\n  \"end_date\": \"2022-08-01\",\n  \"values\": {\n    \"OTV Orani\": 65.0,\n    \"Faiz\": 24.0,\n    \"EUR/TL\": 17.5,\n    \"Kredi Stok\": 5000\n  }\n}"
         },
         "url": {
-          "raw": "{{base_url}}/predict/batch",
+          "raw": "{{base_url}}/predict/range",
           "protocol": "http",
           "host": ["localhost"],
           "port": "8080",
-          "path": ["predict", "batch"]
+          "path": ["predict", "range"]
         }
       },
       "response": []
@@ -104,7 +104,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"start_date\": \"2022-06-01\",\n  \"end_date\": \"2023-06-01\",\n  \"otv_orani\": 66.0,\n  \"faiz\": 24.0,\n  \"eur_tl\": 19.0,\n  \"kredi_stok\": 5500\n}"
+          "raw": "{\n  \"start_date\": \"2022-06-01\",\n  \"end_date\": \"2023-06-01\",\n  \"values\": {\n    \"OTV Orani\": 66.0,\n    \"Faiz\": 24.0,\n    \"EUR/TL\": 19.0,\n    \"Kredi Stok\": 5500\n  }\n}"
         },
         "url": {
           "raw": "{{base_url}}/predict/range",
@@ -128,7 +128,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"otv_orani\": 80.0,\n  \"faiz\": 25.0,\n  \"eur_tl\": 20.0,\n  \"kredi_stok\": 4500,\n  \"date\": \"2023-01-01\"\n}"
+          "raw": "{\n  \"date\": \"2023-01-01\",\n  \"values\": {\n    \"OTV Orani\": 80.0,\n    \"Faiz\": 25.0,\n    \"EUR/TL\": 20.0,\n    \"Kredi Stok\": 4500\n  }\n}"
         },
         "url": {
           "raw": "{{base_url}}/predict",
@@ -152,7 +152,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"otv_orani\": 60.0,\n  \"faiz\": 15.0,\n  \"eur_tl\": 16.0,\n  \"kredi_stok\": 6000,\n  \"date\": \"2023-03-01\"\n}"
+          "raw": "{\n  \"date\": \"2023-03-01\",\n  \"values\": {\n    \"OTV Orani\": 60.0,\n    \"Faiz\": 15.0,\n    \"EUR/TL\": 16.0,\n    \"Kredi Stok\": 6000\n  }\n}"
         },
         "url": {
           "raw": "{{base_url}}/predict",
